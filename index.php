@@ -14,7 +14,7 @@ $nm='Rita';
 function Hello($name = 'Guest')
 {
     $mess="Hello ".$name."!<br>";
-    if ($name === 'Guest') 
+    if ($name === 'Guest')
     {
        //$mess = $mess.'<a href="#">Login</a>';
          $mess .='<a href="#">Login</a>';
@@ -23,12 +23,12 @@ function Hello($name = 'Guest')
     {
        $mess = "How are you,".$name."?";
     }
-    else 
+    else
     {
      $mess .='<a href="#">Log out</a>';
     }
     return $mess;
-    
+
 }
 
 //print Hello();
@@ -48,9 +48,23 @@ print $arr[2];
 
 
 //assoc array
-$lang = [
+$langs = [
         'backend' => ['PHP', 'Python'],
         'frontend' => ['JavaScript'],
         ];
-print_r($lang);
-print $lang['frontend'][0];
+//циклы
+foreach( $langs as $type => $array ) {
+    print '<h2>'.$type.PHP_EOL.'</h2>';
+    foreach ( $array as $lang ) {
+        print '<div>'.$lang.'</div>';
+    }
+    }
+
+for ($i = 0 ; $i < 10 ; $i = $i + 1)   {
+      print $i;
+}
+var_dump($_SERVER);
+
+
+//classes and objects
+
