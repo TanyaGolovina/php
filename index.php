@@ -9,7 +9,7 @@
 
 //define('type','String');
 //print type;
-$nm='Rita';
+/*$nm='Rita';
 
 function Hello($name = 'Guest')
 {
@@ -63,8 +63,15 @@ foreach( $langs as $type => $array ) {
 for ($i = 0 ; $i < 10 ; $i = $i + 1)   {
       print $i;
 }
-var_dump($_SERVER);
+//var_dump($_SERVER);*/
 
 
 //classes and objects
+require_once 'src/GreetingHelper.php';
+$formalhelper = new GreetingHelper('Hello');
+//var_dump($helper);
+print $formalhelper->sayHello('Sergey');
+//$formalhelper = new GreetingHelper('Sergey');
+
+
 
