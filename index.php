@@ -75,7 +75,7 @@ print $formalhelper->sayHello('Sergey');
 
 require_once 'src/Cat.php';
 $cat1 = new Cat('Kasya');
-
+$cat1->getNameType();
 //print $cat1->TypeDefinder();
 
 

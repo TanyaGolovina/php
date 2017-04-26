@@ -31,10 +31,10 @@ class Cat
         }
     }
 
-     //public function getNameType()
-    // {
-
-     //}
+     public function getNameType()
+     {
+         return $this->name.' '.$this->type;
+     }
 
 
 }
