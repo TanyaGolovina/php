@@ -73,5 +73,9 @@ $formalhelper = new GreetingHelper('Hello');
 print $formalhelper->sayHello('Sergey');
 //$formalhelper = new GreetingHelper('Sergey');
 
+require_once 'src/Cat.php';
+$cat1 = new Cat('Kasya');
+
+//print $cat1->TypeDefinder();
 
 
