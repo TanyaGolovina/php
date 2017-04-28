@@ -67,7 +67,7 @@ for ($i = 0 ; $i < 10 ; $i = $i + 1)   {
 
 
 //classes and objects
-require_once 'src/GreetingHelper.php';
+/*require_once 'src/Helper/GreetingHelper.php';
 $formalhelper = new GreetingHelper('Hello');
 //var_dump($helper);
 print $formalhelper->sayHello('Sergey');
@@ -75,7 +75,24 @@ print $formalhelper->sayHello('Sergey');
 
 require_once 'src/Cat.php';
 $cat1 = new Cat('Kasya');
-$cat1->getNameType();
-//print $cat1->TypeDefinder();
+print $cat1->getNameType();*/
+
+
+require  __DIR__.'/vendor/autoload.php'; //подключили все библиотеки и autoload
+$app = new Silex\Application();//подключили приложение с нашего silex(создали объект класса Application namespace=Silex)
+$app['debug'] = true;//включили режим отладки, изначально этот режим выкл, обращаемся к $app как к массиву
+                     //(вообще так делать нельзя, но в этой ситуации можно,
+                     //все зависит от имплементации, почитать базовые интерфейсы в php.net)
+
+$app->get('/', function () {
+    return 'Blog';
+});
+$app->get('/blog/{id}', function ($id) use ($app) {
+    return 'Post '.$app->escape($id);//защита от аттак
+});
+
+$app->run();
+
+
 
 
