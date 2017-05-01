@@ -84,14 +84,27 @@ $app['debug'] = true;//включили режим отладки, изнача�
                      //(вообще так делать нельзя, но в этой ситуации можно,
                      //все зависит от имплементации, почитать базовые интерфейсы в php.net)
 
-$app->get('/', function () {
-    return 'Blog';
+$app->register(new Silex\Provider\TwigServiceProvider(), array( //Twig Register
+    'twig.path' => __DIR__.'/views',
+));
+
+//register routs
+$app->get('/', function () use ($app) {  //main route
+    /** @var Twig_Environment $twig */
+    $twig = $app['twig'];
+    return $twig->render('blog.twig');    //рендерим шаблоны
 });
 $app->get('/blog/{id}', function ($id) use ($app) {
-    return 'Post '.$app->escape($id);//защита от аттак
+    /** @var Twig_Environment $twig */
+    $twig = $app['twig'];
+    return $twig->render('blog-post.twig',['postid' => $id]);
+    //return 'Post '.$app->escape($id);//защита от аттак
 });
 
 $app->run();
+
+
+
 
 
 
