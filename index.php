@@ -87,19 +87,21 @@ $app['debug'] = true;//включили режим отладки, изнача�
 $app->register(new Silex\Provider\TwigServiceProvider(), array( //Twig Register
     'twig.path' => __DIR__.'/views',
 ));
+$app->register(new Silex\Provider\DoctrineServiceProvider(), array( //Doctrine register
+    'db.options' => array(
+        'driver'   => 'pdo_mysql', //драйвер используемый
+        'dbname'    => 'silex_blog', //имя бд
+        'host' => 'localhost',
+        'user'      => 'root',
+        'password'  => 'usbw',
+        'port' => 3307,
+    ),
+));
 
 //register routs
-$app->get('/', function () use ($app) {  //main route
-    /** @var Twig_Environment $twig */
-    $twig = $app['twig'];
-    return $twig->render('blog.twig');    //рендерим шаблоны
-});
-$app->get('/blog/{id}', function ($id) use ($app) {
-    /** @var Twig_Environment $twig */
-    $twig = $app['twig'];
-    return $twig->render('blog-post.twig',['postid' => $id]);
-    //return 'Post '.$app->escape($id);//защита от аттак
-});
+$app->get('/', '\\Controller\\BlogController::indexAction');
+
+$app->get('/blog/{id}', '\\Controller\\BlogController::showPostAction');
 
 $app->run();
 
