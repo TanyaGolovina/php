@@ -16,6 +16,9 @@ class BlogController
     {
         /**@var \Twig_Environment $twig */
         $twig = $app['twig'];
+        
+        $sql="SELECT * FROM posts";
+        $post = $conn->fetchAll($sql);
         return $twig->render('blog.twig');
     }
     public function showPostAction(Application $app, $id)
