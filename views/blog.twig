@@ -1,4 +1,7 @@
 {% extends 'base.twig' %}
 {% block content %}
     <h1>Blog</h1>
+    {% for post in posts %}
+    {{ post.short > 255 ? post.short|slice(0, 255)|raw : post.short|raw }}
+    {% endfor %}
 {% endblock %}
