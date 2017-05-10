@@ -19,7 +19,12 @@ class BlogController
         
         $sql="SELECT * FROM posts";
         $post = $conn->fetchAll($sql);
-        return $twig->render('blog.twig');
+        while ($post = $conn->fetchAll($sql)) 
+        {
+            return $post->render('blog.twig', [
+                                 'post'=>$post
+                )];
+        }
     }
     public function showPostAction(Application $app, $id)
     {
