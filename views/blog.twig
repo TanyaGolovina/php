@@ -2,6 +2,8 @@
 {% block content %}
     <h1>Blog</h1>
     {% for post in posts %}
+    <h2><a href="{{ post }}">{{ post.title }}</a></h2>
+    <h6>{{ post.created_at}}</h6>
     {{ post.short > 255 ? post.short|slice(0, 255)|raw : post.short|raw }}
     {% endfor %}
 {% endblock %}
